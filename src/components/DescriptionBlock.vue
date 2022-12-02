@@ -33,5 +33,7 @@ export default defineComponent({
 #DescriptionBlock {
   margin-top: 50px;
   border: 1px black solid;
+  padding: 25px;
+  background-color: lightyellow;
 }
 </style>
