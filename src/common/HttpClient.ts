@@ -14,4 +14,4 @@ const HttpClient = {
   },
 };
 
-export default HttpClient;
+export { HttpClient };

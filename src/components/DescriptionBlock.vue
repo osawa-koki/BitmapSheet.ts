@@ -5,6 +5,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { marked } from "marked";
+import { HttpClient } from "@/common/HttpClient";
 
 export default defineComponent({
   name: "HelloWorld",
