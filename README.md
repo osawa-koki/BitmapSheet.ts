@@ -1,24 +1,14 @@
-# bitmap_sheet
+# BitmapSheet.ts
 
-## Project setup
-```
-yarn install
-```
+Bitmapファイルの構造を確認するためのプロジェクト。  
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+## 自分用メモ
+
+```shell
+vue create <プロジェクト名>
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## 参考文献
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [Vue入門](https://qiita.com/567000/items/dde495d6a8ad1c25fa43)
+- [Bitmap構造](https://algorithm.joho.info/image-processing/bmp-file-data-header/)
