@@ -1,4 +1,10 @@
 <template>
+  <img
+    src="import.png"
+    alt="import"
+    @click="($refs['file'] as HTMLInputElement).click()"
+  />
+  <input type="file" class="hidden" ref="file" onchange="onFileChange" />
   <div id="BitmapSheet"></div>
 </template>
 
@@ -10,6 +16,18 @@ export default defineComponent({
   props: {
     msg: String,
   },
+  methods: {
+    onFileChange(e: any) {
+      const files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage(file: any) {
+      const image = new Image();
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+    },
+  },
 });
 </script>
 
@@ -18,5 +36,8 @@ export default defineComponent({
 #BitmapSheet {
   margin-top: 50px;
   border: 1px black solid;
+}
+.hidden {
+  display: none;
 }
 </style>
