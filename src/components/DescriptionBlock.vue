@@ -21,7 +21,7 @@ export default defineComponent({
   },
   methods: {
     getContent() {
-      return marked.parse("### HI");
+      return marked.parse("# HI");
     },
   },
 });
