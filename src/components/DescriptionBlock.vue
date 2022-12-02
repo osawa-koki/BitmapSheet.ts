@@ -1,5 +1,5 @@
 <template>
-  <div id="DescriptionBlock" v-html="md"></div>
+  <div id="DescriptionBlock" v-html="description"></div>
 </template>
 
 <script lang="ts">
@@ -9,20 +9,20 @@ import { HttpClient } from "@/common/HttpClient";
 
 export default defineComponent({
   name: "HelloWorld",
-  props: {
-    msg: String,
-  },
+  props: {},
   data() {
     return {
-      md: "",
+      description: "",
     };
   },
   mounted() {
-    this.md = this.getContent();
+    this.getContent();
   },
   methods: {
     getContent() {
-      return marked.parse("# HI");
+      HttpClient.Get("/description.md").then((response) => {
+        this.description = marked.parse(response);
+      });
     },
   },
 });
