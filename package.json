@@ -13,6 +13,8 @@
     "vue": "^3.2.13"
   },
   "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/marked": "^4.0.7",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
