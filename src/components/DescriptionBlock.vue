@@ -1,14 +1,28 @@
 <template>
-  <div id="DescriptionBlock"></div>
+  <div id="DescriptionBlock" v-html="md"></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { marked } from "marked";
 
 export default defineComponent({
   name: "HelloWorld",
   props: {
     msg: String,
+  },
+  data() {
+    return {
+      md: "",
+    };
+  },
+  mounted() {
+    this.md = this.getContent();
+  },
+  methods: {
+    getContent() {
+      return marked.parse("### HI");
+    },
   },
 });
 </script>
