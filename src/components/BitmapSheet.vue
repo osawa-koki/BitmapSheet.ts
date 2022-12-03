@@ -146,19 +146,8 @@ p.site-description {
   }
 }
 #BitmapInfoContainer {
-  #BitmapHeaderInfo {
-    table {
-      border-collapse: collapse;
-      th,
-      td {
-        border: 1px solid black;
-        padding: 5px;
-      }
-    }
-  }
   #BitmapSheet {
     margin-top: 50px;
-    border: 1px black solid;
   }
 }
 .hidden {

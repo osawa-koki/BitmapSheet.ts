@@ -158,3 +158,15 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped lang="scss">
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  th,
+  td {
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+  }
+}
+</style>
