@@ -1,7 +1,11 @@
 <template>
+  <p class="site-description">
+    Bitmapファイルに含まれるプロパティを解析します。
+  </p>
   <img
-    src="import.png"
+    src="@/assets/import.png"
     alt="import"
+    class="import"
     @click="($refs['file'] as HTMLInputElement).click()"
   />
   <input type="file" class="hidden" ref="file" v-on:change="onFileChange" />
@@ -54,6 +58,19 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+p.site-description {
+  margin-top: 50px;
+}
+.import {
+  width: 50px;
+  border: 1px lightgray solid;
+  border-radius: 10%;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+  }
+}
 #BitmapSheet {
   margin-top: 50px;
   border: 1px black solid;
