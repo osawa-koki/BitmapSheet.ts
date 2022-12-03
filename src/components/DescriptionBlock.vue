@@ -22,7 +22,7 @@ export default defineComponent({
   },
   methods: {
     getContent() {
-      HttpClient.Get("/description.md").then((response) => {
+      HttpClient.Get("./description.md").then((response) => {
         this.description = marked.parse(response);
       });
     },
