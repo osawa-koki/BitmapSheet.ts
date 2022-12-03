@@ -104,6 +104,18 @@ export default defineComponent({
           this.height = this.obtainBytesByOffset(byte_array, 22, 25);
           this.plane = this.obtainBytesByOffset(byte_array, 26, 27);
           this.color_depth = this.obtainBytesByOffset(byte_array, 28, 29);
+          let bcBitCount = -1;
+          switch (this.color_depth) {
+            case 24:
+              bcBitCount = 3;
+              break;
+            case 32:
+              bcBitCount = 4;
+              break;
+            default:
+              alert("対応していないビット数です。");
+              return;
+          }
           this.compression = this.obtainBytesByOffset(byte_array, 30, 33);
           this.compression_size = this.obtainBytesByOffset(byte_array, 34, 37);
           this.horizontal_resolution = this.obtainBytesByOffset(
@@ -121,14 +133,14 @@ export default defineComponent({
           // データ取得
           this.colors = [];
           const raw_data = byte_array.slice(this.header_size);
-          for (let i = 0; i < raw_data.length; i += 4) {
+          for (let i = 0; i < raw_data.length; i += bcBitCount) {
             const color: Color = {
               b: raw_data[i],
               g: raw_data[i + 1],
               r: raw_data[i + 2],
               idx: this.header_size + i,
-              x: (i / 4) % this.width,
-              y: this.height - Math.floor(i / 4 / this.width),
+              x: (i / bcBitCount) % this.width,
+              y: this.height - Math.floor(i / bcBitCount / this.width),
             };
             this.colors.push(color);
           }
