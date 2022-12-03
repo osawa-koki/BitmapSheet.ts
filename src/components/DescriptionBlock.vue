@@ -1,5 +1,7 @@
 <template>
-  <div id="DescriptionBlock" v-html="description"></div>
+  <div id="DescriptionBlock">
+    <div class="markdown" v-html="description"></div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -29,7 +31,7 @@ export default defineComponent({
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 #DescriptionBlock {
   margin-top: 50px;
   border: 1px black solid;
