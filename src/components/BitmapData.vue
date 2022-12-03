@@ -51,9 +51,6 @@ export default defineComponent({
       return `rgb(${color.r}, ${color.g}, ${color.b})`;
     },
   },
-  mounted() {
-    const BitmapCanvas = this.$refs["BitmapCanvas"] as HTMLElement;
-  },
 });
 </script>
 
