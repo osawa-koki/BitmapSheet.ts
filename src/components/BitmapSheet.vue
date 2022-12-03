@@ -89,6 +89,12 @@ export default defineComponent({
           this.format_type = text_decoder.decode(
             Uint8Array.from(format_type_bytes).buffer
           );
+          if (this.format_type !== "BM") {
+            alert(
+              "ファイル形式が違います。\nBitmap形式のファイルを選択してください。"
+            );
+            return;
+          }
           this.file_size = this.obtainBytesByOffset(byte_array, 2, 5);
           this.reserved1 = this.obtainBytesByOffset(byte_array, 6, 7);
           this.reserved2 = this.obtainBytesByOffset(byte_array, 8, 9);
