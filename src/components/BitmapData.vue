@@ -54,9 +54,8 @@ export default defineComponent({
       return `rgb(${color.r}, ${color.g}, ${color.b})`;
     },
     get_pixel_title: function (color: Color): string {
-      return `(x: ${color.x + 1}, y: ${color.y})\n(R: ${color.r}, G: ${
-        color.g
-      }, B: ${color.b})`;
+      // eslint-disable-next-line prettier/prettier
+      return `(BYTE: ${color.idx})\n(X: ${color.x + 1}, Y: ${color.y})\n(R: ${color.r}, G: ${color.g}, B: ${color.b})`;
     },
   },
 });
@@ -68,5 +67,13 @@ export default defineComponent({
   margin: 50px 0;
   width: 500px;
   aspect-ratio: 1 / 1;
+  .pixel {
+    transition: all 0.5s ease;
+    cursor: crosshair;
+    &:hover {
+      border: 1px solid black;
+      transform: scale(1.5);
+    }
+  }
 }
 </style>
