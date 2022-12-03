@@ -81,7 +81,6 @@ export default defineComponent({
       const file = files[0];
       this.file2ByteArray(file)
         .then((data) => {
-          this.header_show = true;
           const byte_array = new Uint8Array(data);
           // ヘッダ情報取得
           const format_type_bytes = [byte_array[0], byte_array[1]];
@@ -95,6 +94,7 @@ export default defineComponent({
             );
             return;
           }
+          this.header_show = true; // このタイミングでヘッダ情報を表示
           this.file_size = this.obtainBytesByOffset(byte_array, 2, 5);
           this.reserved1 = this.obtainBytesByOffset(byte_array, 6, 7);
           this.reserved2 = this.obtainBytesByOffset(byte_array, 8, 9);
