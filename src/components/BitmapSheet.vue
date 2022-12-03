@@ -12,7 +12,24 @@
   <div id="BitmapInfoContainer">
     <div id="BitmapSheet" v-if="header_show">
       <div id="BitmapHeaderInfo">
-        <BitmapHeader :format_type="format_type" :file_size="file_size" />
+        <BitmapHeader
+          :format_type="format_type"
+          :file_size="file_size"
+          :reserved1="reserved1"
+          :reserved2="reserved2"
+          :header_size="header_size"
+          :info_header_size="info_header_size"
+          :width="width"
+          :height="height"
+          :plane="plane"
+          :color_depth="color_depth"
+          :compression="compression"
+          :compression_size="compression_size"
+          :horizontal_resolution="horizontal_resolution"
+          :vertical_resolution="vertical_resolution"
+          :color_palette="color_palette"
+          :important_color="important_color"
+        />
       </div>
     </div>
   </div>
@@ -32,6 +49,20 @@ export default defineComponent({
       header_show: false as boolean,
       format_type: "" as string,
       file_size: -1 as number,
+      reserved1: -1 as number,
+      reserved2: -1 as number,
+      header_size: -1 as number,
+      info_header_size: -1 as number,
+      width: -1 as number,
+      height: -1 as number,
+      plane: -1 as number,
+      color_depth: -1 as number,
+      compression: -1 as number,
+      compression_size: -1 as number,
+      horizontal_resolution: -1 as number,
+      vertical_resolution: -1 as number,
+      color_palette: -1 as number,
+      important_color: -1 as number,
     };
   },
   methods: {
