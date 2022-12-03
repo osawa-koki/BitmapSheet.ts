@@ -114,7 +114,7 @@ export default defineComponent({
           this.important_color = this.obtainBytesByOffset(byte_array, 50, 53);
           // データ取得
           this.colors = [];
-          const raw_data = byte_array.slice(54);
+          const raw_data = byte_array.slice(this.header_size);
           for (let i = 0; i < raw_data.length; i += 4) {
             const color: Color = {
               b: raw_data[i],
