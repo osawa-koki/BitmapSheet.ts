@@ -79,7 +79,7 @@ export default defineComponent({
           console.log(err);
         });
     },
-    file2ByteArray(file: File): Promise<Uint8Array> {
+    file2ByteArray(file: File): Promise<ArrayBuffer> {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = (event: any) => {
