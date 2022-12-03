@@ -16,6 +16,7 @@
         gridColumn: `${pixel.x + 1} / ${pixel.x + 2}`,
         gridRow: `${pixel.y + 1} / ${pixel.y + 2}`,
       }"
+      v-bind:title="get_pixel_title(pixel)"
     ></div>
   </div>
 </template>
@@ -51,6 +52,11 @@ export default defineComponent({
   methods: {
     get_background_color: function (color: Color): string {
       return `rgb(${color.r}, ${color.g}, ${color.b})`;
+    },
+    get_pixel_title: function (color: Color): string {
+      return `(x: ${color.x + 1}, y: ${color.y})\n(R: ${color.r}, G: ${
+        color.g
+      }, B: ${color.b})`;
     },
   },
 });
