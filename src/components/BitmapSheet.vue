@@ -115,8 +115,6 @@ export default defineComponent({
           // データ取得
           this.colors = [];
           const raw_data = byte_array.slice(54);
-          console.log(byte_array.length);
-          console.log(raw_data.length);
           for (let i = 0; i < raw_data.length; i += 4) {
             const color: Color = {
               b: raw_data[i],
