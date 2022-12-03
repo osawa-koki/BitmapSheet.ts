@@ -77,6 +77,11 @@ export default defineComponent({
           this.header_show = true;
           const byte_array = new Uint8Array(data);
           // ヘッダ情報取得
+          const format_type_bytes = [byte_array[0], byte_array[1]];
+          const text_decoder = new TextDecoder("utf-8");
+          this.format_type = text_decoder.decode(
+            Uint8Array.from(format_type_bytes).buffer
+          );
           this.file_size = this.obtainBytesByOffset(byte_array, 2, 5);
           this.reserved1 = this.obtainBytesByOffset(byte_array, 6, 7);
           this.reserved2 = this.obtainBytesByOffset(byte_array, 8, 9);
