@@ -9,10 +9,12 @@
   >
     <div
       v-for="pixel in colors"
-      :key="pixel.toString()"
+      :key="pixel.idx"
       class="pixel"
       v-bind:style="{
         backgroundColor: get_background_color(pixel),
+        gridColumn: `${pixel.x + 1} / ${pixel.x + 2}`,
+        gridRow: `${pixel.y + 1} / ${pixel.y + 2}`,
       }"
     ></div>
   </div>
