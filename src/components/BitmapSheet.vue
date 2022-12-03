@@ -126,7 +126,7 @@ export default defineComponent({
               b: raw_data[i],
               g: raw_data[i + 1],
               r: raw_data[i + 2],
-              idx: i,
+              idx: this.header_size + i,
               x: (i / 4) % this.width,
               y: this.height - Math.floor(i / 4 / this.width),
             };
