@@ -9,16 +9,30 @@
     @click="($refs['file'] as HTMLInputElement).click()"
   />
   <input type="file" class="hidden" ref="file" v-on:change="onFileChange" />
-  <div id="BitmapSheet"></div>
+  <div id="BitmapInfoContainer">
+    <div id="BitmapSheet" v-if="header_show">
+      <div id="BitmapHeaderInfo">
+        <BitmapHeader :format_type="format_type" :file_size="file_size" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import BitmapHeader from "./BitmapHeader.vue";
 
 export default defineComponent({
   name: "BitmapSheet",
-  props: {
-    msg: String,
+  components: {
+    BitmapHeader,
+  },
+  data() {
+    return {
+      header_show: false as boolean,
+      format_type: "" as string,
+      file_size: -1 as number,
+    };
   },
   methods: {
     onFileChange(e: any) {
@@ -71,9 +85,21 @@ p.site-description {
     opacity: 0.5;
   }
 }
-#BitmapSheet {
-  margin-top: 50px;
-  border: 1px black solid;
+#BitmapInfoContainer {
+  #BitmapHeaderInfo {
+    table {
+      border-collapse: collapse;
+      th,
+      td {
+        border: 1px solid black;
+        padding: 5px;
+      }
+    }
+  }
+  #BitmapSheet {
+    margin-top: 50px;
+    border: 1px black solid;
+  }
 }
 .hidden {
   display: none;
