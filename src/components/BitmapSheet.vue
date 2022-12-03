@@ -74,8 +74,9 @@ export default defineComponent({
       const file = files[0];
       this.file2ByteArray(file)
         .then((data) => {
+          this.header_show = true;
           const byte_array = new Uint8Array(data);
-          console.log(byte_array);
+          this.file_size = this.obtainBytesByOffset(byte_array, 2, 5);
         })
         .catch((err) => {
           console.log(err);
@@ -93,6 +94,13 @@ export default defineComponent({
         };
         reader.readAsArrayBuffer(file);
       });
+    },
+    obtainBytesByOffset(bytes: Uint8Array, start: number, end: number): number {
+      let result = 0;
+      for (let i = start; i < end; i++) {
+        result += bytes[i] << (8 * (i - start));
+      }
+      return result;
     },
   },
 });
