@@ -66,8 +66,10 @@ export default defineComponent({
     };
   },
   methods: {
-    onFileChange(e: any) {
-      const files = e.target.files || e.dataTransfer.files;
+    onFileChange(event: Event) {
+      if (event == null) return;
+      const files = (event.target as HTMLInputElement).files;
+      if (files == null) return;
       if (files.length < 0) return;
       const file = files[0];
       this.file2ByteArray(file)
@@ -82,20 +84,15 @@ export default defineComponent({
     file2ByteArray(file: File): Promise<ArrayBuffer> {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
-        reader.onload = (event: any) => {
+        reader.onload = (event: ProgressEvent<FileReader>) => {
           if (event === null) {
             reject("event is null");
             return;
           }
-          resolve(event.target.result);
+          resolve(event.target?.result as ArrayBuffer);
         };
         reader.readAsArrayBuffer(file);
       });
-    },
-    createImage(file: any) {
-      const image = new Image();
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
     },
   },
 });
