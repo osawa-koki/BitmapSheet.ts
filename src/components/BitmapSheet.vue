@@ -76,7 +76,31 @@ export default defineComponent({
         .then((data) => {
           this.header_show = true;
           const byte_array = new Uint8Array(data);
+          // ヘッダ情報取得
           this.file_size = this.obtainBytesByOffset(byte_array, 2, 5);
+          this.reserved1 = this.obtainBytesByOffset(byte_array, 6, 7);
+          this.reserved2 = this.obtainBytesByOffset(byte_array, 8, 9);
+          this.header_size = this.obtainBytesByOffset(byte_array, 10, 13);
+          this.info_header_size = this.obtainBytesByOffset(byte_array, 14, 17);
+          this.width = this.obtainBytesByOffset(byte_array, 18, 21);
+          this.height = this.obtainBytesByOffset(byte_array, 22, 25);
+          this.plane = this.obtainBytesByOffset(byte_array, 26, 27);
+          this.color_depth = this.obtainBytesByOffset(byte_array, 28, 29);
+          this.compression = this.obtainBytesByOffset(byte_array, 30, 33);
+          this.compression_size = this.obtainBytesByOffset(byte_array, 34, 37);
+          this.horizontal_resolution = this.obtainBytesByOffset(
+            byte_array,
+            38,
+            41
+          );
+          this.vertical_resolution = this.obtainBytesByOffset(
+            byte_array,
+            42,
+            45
+          );
+          this.color_palette = this.obtainBytesByOffset(byte_array, 46, 49);
+          this.important_color = this.obtainBytesByOffset(byte_array, 50, 53);
+          // フォーマットタイプ取得
         })
         .catch((err) => {
           console.log(err);
