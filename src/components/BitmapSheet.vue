@@ -31,6 +31,9 @@
           :important_color="important_color"
         />
       </div>
+      <div id="BitmapDataInfo">
+        <BitmapData :width="width" :height="height" :data="data" />
+      </div>
     </div>
   </div>
 </template>
@@ -38,11 +41,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import BitmapHeader from "./BitmapHeader.vue";
+import BitmapData from "./BitmapData.vue";
 
 export default defineComponent({
   name: "BitmapSheet",
   components: {
     BitmapHeader,
+    BitmapData,
   },
   data() {
     return {
@@ -63,6 +68,7 @@ export default defineComponent({
       vertical_resolution: -1 as number,
       color_palette: -1 as number,
       important_color: -1 as number,
+      data: new Uint8Array() as Uint8Array,
     };
   },
   methods: {
@@ -105,7 +111,8 @@ export default defineComponent({
           );
           this.color_palette = this.obtainBytesByOffset(byte_array, 46, 49);
           this.important_color = this.obtainBytesByOffset(byte_array, 50, 53);
-          // フォーマットタイプ取得
+          // データ取得
+          this.data = byte_array.slice(54, byte_array.length - 1);
         })
         .catch((err) => {
           console.log(err);
