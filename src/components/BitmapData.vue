@@ -16,6 +16,7 @@
         gridColumn: `${pixel.x + 1} / ${pixel.x + 2}`,
         gridRow: `${pixel.y + 1} / ${pixel.y + 2}`,
       }"
+      v-bind:title="get_pixel_title(pixel)"
     ></div>
   </div>
 </template>
@@ -52,6 +53,10 @@ export default defineComponent({
     get_background_color: function (color: Color): string {
       return `rgb(${color.r}, ${color.g}, ${color.b})`;
     },
+    get_pixel_title: function (color: Color): string {
+      // eslint-disable-next-line prettier/prettier
+      return `(BYTE: ${color.idx})\n(X: ${color.x + 1}, Y: ${color.y})\n(R: ${color.r}, G: ${color.g}, B: ${color.b})`;
+    },
   },
 });
 </script>
@@ -62,5 +67,13 @@ export default defineComponent({
   margin: 50px 0;
   width: 500px;
   aspect-ratio: 1 / 1;
+  .pixel {
+    transition: all 0.5s ease;
+    cursor: crosshair;
+    &:hover {
+      border: 1px solid black;
+      transform: scale(1.5);
+    }
+  }
 }
 </style>

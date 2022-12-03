@@ -81,7 +81,6 @@ export default defineComponent({
       const file = files[0];
       this.file2ByteArray(file)
         .then((data) => {
-          this.header_show = true;
           const byte_array = new Uint8Array(data);
           // ヘッダ情報取得
           const format_type_bytes = [byte_array[0], byte_array[1]];
@@ -89,6 +88,13 @@ export default defineComponent({
           this.format_type = text_decoder.decode(
             Uint8Array.from(format_type_bytes).buffer
           );
+          if (this.format_type !== "BM") {
+            alert(
+              "ファイル形式が違います。\nBitmap形式のファイルを選択してください。"
+            );
+            return;
+          }
+          this.header_show = true; // このタイミングでヘッダ情報を表示
           this.file_size = this.obtainBytesByOffset(byte_array, 2, 5);
           this.reserved1 = this.obtainBytesByOffset(byte_array, 6, 7);
           this.reserved2 = this.obtainBytesByOffset(byte_array, 8, 9);
@@ -120,7 +126,7 @@ export default defineComponent({
               b: raw_data[i],
               g: raw_data[i + 1],
               r: raw_data[i + 2],
-              idx: i,
+              idx: this.header_size + i,
               x: (i / 4) % this.width,
               y: this.height - Math.floor(i / 4 / this.width),
             };
