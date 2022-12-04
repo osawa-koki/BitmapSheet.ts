@@ -5,6 +5,7 @@
     v-bind:style="{
       gridTemplateColumns: grid_template_columns,
       gridTemplateRows: grid_template_rows,
+      aspectRatio: `${width} / ${height}`,
     }"
   >
     <div
@@ -66,7 +67,7 @@ export default defineComponent({
   display: grid;
   margin: 50px 0;
   width: 500px;
-  aspect-ratio: 1 / 1;
+  border: 1px black solid;
   .pixel {
     transition: all 0.5s ease;
     cursor: crosshair;
