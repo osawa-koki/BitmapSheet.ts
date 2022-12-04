@@ -15,7 +15,7 @@
       v-bind:style="{
         backgroundColor: get_background_color(pixel),
         gridColumn: `${pixel.x + 1} / ${pixel.x + 2}`,
-        gridRow: `${pixel.y + 1} / ${pixel.y + 2}`,
+        gridRow: `${pixel.y} / ${pixel.y}`,
       }"
       v-bind:title="get_pixel_title(pixel)"
     ></div>
