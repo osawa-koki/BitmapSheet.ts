@@ -8,7 +8,13 @@
     class="import"
     @click="($refs['file'] as HTMLInputElement).click()"
   />
-  <input type="file" class="hidden" ref="file" v-on:change="onFileChange" />
+  <input
+    type="file"
+    accept="image/bmp"
+    class="hidden"
+    ref="file"
+    v-on:change="onFileChange"
+  />
   <div id="BitmapInfoContainer">
     <div id="BitmapSheet" v-if="header_show">
       <div id="BitmapHeaderInfo">
