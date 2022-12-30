@@ -11,7 +11,6 @@ import { HttpClient } from "@/common/HttpClient";
 
 export default defineComponent({
   name: "HelloWorld",
-  props: {},
   data() {
     return {
       description: "",
