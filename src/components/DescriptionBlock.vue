@@ -32,7 +32,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 #DescriptionBlock {
-  margin-top: 50px;
+  margin: 3rem auto;
   border: 1px black solid;
   padding: 25px;
   background-color: lightyellow;

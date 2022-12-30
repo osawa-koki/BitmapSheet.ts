@@ -28,7 +28,7 @@ export default defineComponent({
   color: #2c3e50;
   margin-top: 60px;
   main {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 }
